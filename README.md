@@ -61,7 +61,7 @@ TSDeclareType(MostWanted, TSEmpty);
 TSImplementType(MostWanted, "persons of interest");
 TSField(TSStringArray, MostWanted, names, TSStringArray());
 
-void testTSType
+void testTSType()
 {
     printf("All known types:\n");
     TSType::print();
