@@ -50,7 +50,7 @@ TSField(TSString, SomeKindOfClass, fileName, "user.prefs");
 class MostWanted 
 {
 public:
-	TSStringArray names;
+    TSStringArray names;
 };
 TSDeclareType(MostWanted, TSEmpty); 
 ```
