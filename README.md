@@ -40,7 +40,7 @@ TSField(TSString, SomeKindOfClass, fileName, "user.prefs");
 ## Sample
 
 ```cpp
-&#35;include "TSType.h"
+#include "TSType.h"
 
 class MostWanted 
 {
@@ -51,7 +51,7 @@ TSDeclareType(MostWanted, TSEmpty);
 ```
 
 ```cpp
-&#35;include "MostWanted.h"
+#include "MostWanted.h"
 
 TSImplementType(MostWanted, "persons of interest");
 TSField(TSStringArray, MostWanted, personsOfInterest, TSStringArray());
