@@ -25,7 +25,7 @@ If the class is abstract:
 TSDeclareAbstractType(SomeKindOfClass, SomeBaseClassType);
 ```
 
-### Soure Changes
+### Source Changes
 
 Implement the class in a c++ file:
 ```cpp
