@@ -54,7 +54,7 @@ TSDeclareType(MostWanted, TSEmpty);
 #include "MostWanted.h"
 
 TSImplementType(MostWanted, "persons of interest");
-TSField(TSStringArray, MostWanted, personsOfInterest, TSStringArray());
+TSField(TSStringArray, MostWanted, names, TSStringArray());
 
 void testTSType
 {
