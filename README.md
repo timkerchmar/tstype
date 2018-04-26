@@ -66,12 +66,11 @@ void testTSType
 	
     MostWanted* foo = MostWantedType->create();
     foo->names.push_back("Bob");
-    
+
     printf("\nPrinting a description of the MostWanted object:\n");
     PrintObjectHierarchy(MostWantedType, foo);
+
     foo->destroy();
-	
-    return 0;
 }
 ```
 
