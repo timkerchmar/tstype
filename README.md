@@ -70,7 +70,7 @@ void testTSType
     printf("\nPrinting a description of the MostWanted object:\n");
     PrintObjectHierarchy(MostWantedType, foo);
 
-    foo->destroy();
+    MostWantedType->destroy(foo);
 }
 ```
 
