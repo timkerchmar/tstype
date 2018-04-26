@@ -32,6 +32,11 @@ Implement the class in a c++ file:
 TSImplementType(SomeKindOfClass, "complexity manager");
 ```
 
+If the class is abstract:
+```cpp
+TSImplementAbstractType(SomeKindOfClass, "complexity manager");
+```
+
 Describe each public field in the C++ source and add a default value:
 ```cpp
 TSField(TSString, SomeKindOfClass, fileName, "user.prefs");
