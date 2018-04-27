@@ -2,7 +2,7 @@
 
 ## What is it?
 
-A lightweight RTTI lib for C++ that doesn't require C++'s RTTI or boost. It enables real reflection.
+A lightweight RTTI lib for C++ that doesn't require C++'s RTTI or boost. It enables real reflection and is useful for inspecting 3rd party structs and classes without modifying 3rd party source files.
 
 ## How do I use it?
 
@@ -50,7 +50,7 @@ TSField(TSString, SomeKindOfClass, fileName, "user.prefs");
 class MostWanted 
 {
 public:
-    TSStringArray names;
+    std::vector< std::string > names;
 };
 TSDeclareType(MostWanted, TSEmpty); 
 ```
