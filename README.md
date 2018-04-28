@@ -69,13 +69,10 @@ void testTSType()
     printf("\nPrinting a description of the TSStringType object:\n");
     PrintObjectHierarchy(TSTypeType, TSStringType);
 	
-    MostWanted* foo = MostWantedType->create();
-    foo->names.push_back("Bob");
-
+    MostWanted foo;
+    foo.names.push_back("Bob");
     printf("\nPrinting a description of the MostWanted object:\n");
     PrintObjectHierarchy(MostWantedType, foo);
-
-    MostWantedType->destroy(foo);
 }
 ```
 
@@ -84,12 +81,15 @@ Output:
 ```
 All known types:
     Type 
+        MostWanted ( names )
         TSObject ( type )
             ContainerBase 
                 GenericContainer 
             GenericReference ( id )
         TSType ( fields name description )
         Array 
+            MostWantedArray 
+            MostWantedPtrArray 
             TSObjectArray 
             TSObjectPtrArray 
             TSTypePtrArray 
@@ -101,8 +101,12 @@ All known types:
             GenericReferenceArray 
             GenericReferencePtrArray 
             TSStringArray 
+                MostWantednames 
             TSStringPtrArray 
         Pointer 
+            MostWantedPtr 
+            MostWantedArrayPtr 
+            MostWantedPtrArrayPtr 
             TSObjectPtr 
             TSObjectArrayPtr 
             TSObjectPtrArrayPtr 
@@ -125,6 +129,7 @@ All known types:
             TSTypename 
             TSTypedescription 
             GenericReferenceid 
+
 Printing a description of the TSStringType object:
 type instance
     fields
@@ -137,6 +142,12 @@ persons of interest
         text = "Bob"
 ```
 
-## TODO
+## Notes
 
-API for enumerating the methods of an object. Default values are not evaluated until they are requested by calling setDefaultValue from the object's type instance.
+Missing API for enumerating the methods of an object.
+
+Default values are not evaluated until they are requested by calling field type class's setDefaultValue on the object instance.
+
+Not valid to call a type's createInstance (untyped) or create (typed version) unless class derives from TSObject. It will erroneously cast the object to a TSObject and set its type regardless of whether or not it is actually a TSObject.
+
+Workaround: Generic code should get the properties of the type and handle allocation directly. It wasn't clear to me how to simply address TSEmpty, unless I make the root macros be something like TSDeclareNonTSObjectClass or something equally ugly.
