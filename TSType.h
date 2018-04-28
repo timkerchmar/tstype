@@ -198,7 +198,7 @@ public: \
     static CLASS* create() \
     { \
         CLASS* newClass = new CLASS(); \
-        { \
+        if (typeInstance.is(TSObjectType)) { \
             TSObject* typed = (TSObject *)newClass; \
             typed->type = &typeInstance; \
         } \

@@ -59,7 +59,7 @@ TSDeclareType(MostWanted, TSEmpty);
 #include "MostWanted.h"
 
 TSImplementType(MostWanted, "persons of interest");
-TSField(TSStringArray, MostWanted, names, TSStringArray());
+TSField(TSStringArray, MostWanted, names, std::vector< std::string >());
 
 void testTSType()
 {
@@ -69,10 +69,13 @@ void testTSType()
     printf("\nPrinting a description of the TSStringType object:\n");
     PrintObjectHierarchy(TSTypeType, TSStringType);
 	
-    MostWanted foo;
-    foo.names.push_back("Bob");
+    MostWanted* foo = MostWantedType->create();
+    foo->names.push_back("Bob");
+
     printf("\nPrinting a description of the MostWanted object:\n");
     PrintObjectHierarchy(MostWantedType, foo);
+
+    MostWantedType->destroy(foo);
 }
 ```
 
@@ -147,7 +150,3 @@ persons of interest
 Missing API for enumerating the methods of an object.
 
 Default values are not evaluated until they are requested by calling field type class's setDefaultValue on the object instance.
-
-Not valid to call a type's createInstance (untyped) or create (typed version) unless class derives from TSObject. It will erroneously cast the object to a TSObject and set its type regardless of whether or not it is actually a TSObject.
-
-Workaround: Generic code should get the properties of the type and handle allocation directly. It wasn't clear to me how to simply address TSEmpty, unless I make the root macros be something like TSDeclareNonTSObjectClass or something equally ugly.
